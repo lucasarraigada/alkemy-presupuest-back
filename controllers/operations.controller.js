@@ -1,5 +1,4 @@
 const conecctionSql = require('../configs/db.config');
-const regex = require('../common/regular-expressions');
 
 const getAllOperations = async(req, res) => {
     await conecctionSql.query('SELECT * FROM operations ORDER BY date DESC LIMIT 10 ', (error, operations) => {
