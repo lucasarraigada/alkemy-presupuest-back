@@ -6,7 +6,7 @@ const mySqlConecction = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'alkemy_presupuesto'
+    database: 'alkemy_presupuest'
 });
 
 //COMPROBAR SI BASE DE DATOS ESTA CONECTADA
