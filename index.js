@@ -21,14 +21,11 @@ app.use((req, res, next) => {
 });
 
 //CARGAR RUTAS
-var user_routes = require('./routes/authentication.routes');
 var operations_routes = require('./routes/operations.routes');
 
 
 //RUTAS BASES
-app.use('/api', user_routes);
-app.use('/api', incomes_routes);
-app.use('/api', expenses_routes);
+app.use('/api', operations_routes);
 
 //Starting server
 
