@@ -1,7 +1,8 @@
 const conecctionSql = require('../configs/db.config');
+const regex = require('../common/regular-expressions');
 
 const getAllOperations = async(req, res) => {
-    await conecctionSql.query('SELECT * FROM operations LIMIT 10', (error, operations) => {
+    await conecctionSql.query('SELECT * FROM operations ORDER BY date DESC LIMIT 10 ', (error, operations) => {
         if (error) {
             return res.status(500).send({ message: "There are no operations" });
         } else {
@@ -26,7 +27,7 @@ const getOneOperation = async(req, res) => {
         if (error) {
             return res.status(500).send({ message: "The operation doesn't exist" });
         } else {
-            return res.status(200).send(operation);
+            return res.status(200).send(operation[0]);
         }
     });
 }
@@ -65,11 +66,22 @@ const deleteOperation = async(req, res) => {
     });
 }
 
+const getBalance = async(req, res) => {
+    await conecctionSql.query('SELECT SUM(amount) as amount,SUM(CASE WHEN operationType = 1 THEN amount END)-SUM(CASE WHEN operationType = 2 THEN amount END) as balance FROM operations', (error, operation) => {
+        if (error) {
+            return res.status(500).send({ message: 'Database error' });
+        } else {
+            return res.status(200).send(operation[0]);
+        }
+    })
+}
+
 module.exports = {
     getAllOperations,
     getAllOperationsType,
     getOneOperation,
     createOperation,
     updateOperation,
-    deleteOperation
+    deleteOperation,
+    getBalance
 }

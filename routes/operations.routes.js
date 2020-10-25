@@ -11,6 +11,9 @@ router.get('/operation/types', operationController.getAllOperationsType);
 //RUTA PARA OBTENER UNA OPERACION
 router.get('/operation/:id', operationController.getOneOperation);
 
+//RUTA PARA OBTENER BALANCE
+router.post('/operation/balance', operationController.getBalance);
+
 //RUTA PARA CREAR UNA OPERACION
 router.post('/operation', operationController.createOperation);
 
