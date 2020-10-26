@@ -3,7 +3,7 @@ CREATE SCHEMA `alkemy_presupuest` ;
 
 /*CREACION TABLA OPERATIONS */
 CREATE TABLE `alkemy_presupuest`.`operations` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `concept` VARCHAR(45) NOT NULL,
   `amount` DECIMAL(10,2) NOT NULL,
   `date` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
